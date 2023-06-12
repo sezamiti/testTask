@@ -1,5 +1,8 @@
 <template>
+
+    <h4>
     <span @click="addLike()" class="badge likesButton" :class="isLike ? 'bg-primary': 'bg-danger'">{{ articleLikes }} <i class="far fa-thumbs-up"></i></span>
+    </h4>
 </template>
 
 <script>

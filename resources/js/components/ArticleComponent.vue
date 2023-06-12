@@ -2,16 +2,19 @@
 <div class="row mt-5">
 <div class="col-12 p-3">
     <img :src="article.img" class="border rounded mx-auto d-block" alt="...">
-    <h5 class="mt-5">{{article.title}}</h5>
-    <p>
-        <span class="tag" v-for="(tag,index) in article.tags">
+    <h3 class="mt-5">{{article.title}}</h3>
+    <p class="card-text">{{article.body}}</p>
+
+    <div class="mt-3 d-flex d-flex justify-content-around">
+        <h4>
+        <span class="tag bg-danger" v-for="(tag,index) in article.tags">
             <span v-if="tagsLen == (index+1)">{{tag.label}}</span>
             <span v-else>{{tag.label}} | </span>
         </span>
-    </p>
-    <p class="card-text">{{article.body}}</p>
-    <p>Опубликованно:  <i>{{article.created_at}}</i></p>
-    <div class="mt-3">
+        </h4>
+        <h4>Опубликованно:  <i>{{article.created_at}}</i></h4>
+    </div>
+    <div class="mt-3 d-flex d-flex justify-content-around">
         <views-component></views-component>
         <likes-component></likes-component>
     </div>

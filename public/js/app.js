@@ -5335,6 +5335,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5471,6 +5474,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5505,6 +5511,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -29252,30 +29260,32 @@ var render = function () {
         attrs: { src: _vm.article.img, alt: "..." },
       }),
       _vm._v(" "),
-      _c("h5", { staticClass: "mt-5" }, [_vm._v(_vm._s(_vm.article.title))]),
-      _vm._v(" "),
-      _c(
-        "p",
-        _vm._l(_vm.article.tags, function (tag, index) {
-          return _c("span", { staticClass: "tag" }, [
-            _vm.tagsLen == index + 1
-              ? _c("span", [_vm._v(_vm._s(tag.label))])
-              : _c("span", [_vm._v(_vm._s(tag.label) + " | ")]),
-          ])
-        }),
-        0
-      ),
+      _c("h3", { staticClass: "mt-5" }, [_vm._v(_vm._s(_vm.article.title))]),
       _vm._v(" "),
       _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.article.body))]),
       _vm._v(" "),
-      _c("p", [
-        _vm._v("Опубликованно:  "),
-        _c("i", [_vm._v(_vm._s(_vm.article.created_at))]),
+      _c("div", { staticClass: "mt-3 d-flex d-flex justify-content-around" }, [
+        _c(
+          "h4",
+          _vm._l(_vm.article.tags, function (tag, index) {
+            return _c("span", { staticClass: "tag bg-danger" }, [
+              _vm.tagsLen == index + 1
+                ? _c("span", [_vm._v(_vm._s(tag.label))])
+                : _c("span", [_vm._v(_vm._s(tag.label) + " | ")]),
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c("h4", [
+          _vm._v("Опубликованно:  "),
+          _c("i", [_vm._v(_vm._s(_vm.article.created_at))]),
+        ]),
       ]),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "mt-3" },
+        { staticClass: "mt-3 d-flex d-flex justify-content-around" },
         [_c("views-component"), _vm._v(" "), _c("likes-component")],
         1
       ),
@@ -29517,22 +29527,24 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "span",
-    {
-      staticClass: "badge likesButton",
-      class: _vm.isLike ? "bg-primary" : "bg-danger",
-      on: {
-        click: function ($event) {
-          return _vm.addLike()
+  return _c("h4", [
+    _c(
+      "span",
+      {
+        staticClass: "badge likesButton",
+        class: _vm.isLike ? "bg-primary" : "bg-danger",
+        on: {
+          click: function ($event) {
+            return _vm.addLike()
+          },
         },
       },
-    },
-    [
-      _vm._v(_vm._s(_vm.articleLikes) + " "),
-      _c("i", { staticClass: "far fa-thumbs-up" }),
-    ]
-  )
+      [
+        _vm._v(_vm._s(_vm.articleLikes) + " "),
+        _c("i", { staticClass: "far fa-thumbs-up" }),
+      ]
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -29557,9 +29569,12 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("span", { staticClass: "badge bg-danger" }, [
-    _vm._v(_vm._s(_vm.viewsNumber) + " "),
-    _c("i", { staticClass: "far fa-eye" }),
+  return _c("h4", [
+    _vm._v(" Просмотры:\n"),
+    _c("span", { staticClass: "badge bg-danger" }, [
+      _vm._v(_vm._s(_vm.viewsNumber) + " "),
+      _c("i", { staticClass: "far fa-eye" }),
+    ]),
   ])
 }
 var staticRenderFns = []
