@@ -26,6 +26,9 @@
                     <img src="https://via.placeholder.com/50/5F113B/FFFFFF/?text=User" class="rounded me-2" alt="...">
                     <strong class="me-auto">{{comment.subject}}</strong>
                     <small class="text-muted">{{comment.created_at}}</small>
+                    <button class="btn btn-danger btn-sm" @click="deleteComment(comment.id)">
+                        Удалить
+                    </button>
                 </div>
                 <div class="toast-body">
                     {{comment.body}}
@@ -65,6 +68,17 @@ export default {
                 body: this.body,
                 article_id : this.$store.state.article.article.id
             })
+        },
+        deleteComment(commentId) {
+            axios.delete(`/api/comments/${commentId}`)
+                .then(response => {
+                    // Обработка успешного удаления комментария
+                    console.log(response.data.message);
+                })
+                .catch(error => {
+                    // Обработка ошибок при удалении комментария
+                    console.log(error.response.data);
+                });
         }
     },
     mounted() {

@@ -54,7 +54,22 @@ export const actions = {
                 context.state.errors = error.response.data.errors
             }
         });
+    },
+    deleteComment(context, commentId) {
+        axios
+            .delete(`/api/comments/${commentId}`)
+            .then(response => {
+                // Обработка успешного удаления комментария
+                console.log(response.data.message);
+                // Вызов мутации для удаления комментария из списка
+                context.commit('REMOVE_COMMENT', commentId);
+            })
+            .catch(error => {
+                // Обработка ошибок при удалении комментария
+                console.log(error.response.data);
+            });
     }
+
 
 }
 
@@ -76,5 +91,11 @@ export const mutations = {
     },
     SET_COMMENT_SUCCESS(state, payload){
         state.commentSuccess = payload;
+    },
+    REMOVE_COMMENT(state, commentId) {
+        const index = state.article.comments.findIndex(comment => comment.id === commentId);
+        if (index !== -1) {
+            state.article.comments.splice(index, 1);
+        }
     }
 }

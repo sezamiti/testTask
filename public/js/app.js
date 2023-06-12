@@ -5402,6 +5402,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5430,6 +5433,15 @@ __webpack_require__.r(__webpack_exports__);
         subject: this.subject,
         body: this.body,
         article_id: this.$store.state.article.article.id
+      });
+    },
+    deleteComment: function deleteComment(commentId) {
+      axios["delete"]("/api/comments/".concat(commentId)).then(function (response) {
+        // Обработка успешного удаления комментария
+        console.log(response.data.message);
+      })["catch"](function (error) {
+        // Обработка ошибок при удалении комментария
+        console.log(error.response.data);
       });
     }
   },
@@ -5735,6 +5747,17 @@ var actions = {
         context.state.errors = error.response.data.errors;
       }
     });
+  },
+  deleteComment: function deleteComment(context, commentId) {
+    axios["delete"]("/api/comments/".concat(commentId)).then(function (response) {
+      // Обработка успешного удаления комментария
+      console.log(response.data.message);
+      // Вызов мутации для удаления комментария из списка
+      context.commit('REMOVE_COMMENT', commentId);
+    })["catch"](function (error) {
+      // Обработка ошибок при удалении комментария
+      console.log(error.response.data);
+    });
   }
 };
 var getters = {
@@ -5754,6 +5777,14 @@ var mutations = {
   },
   SET_COMMENT_SUCCESS: function SET_COMMENT_SUCCESS(state, payload) {
     state.commentSuccess = payload;
+  },
+  REMOVE_COMMENT: function REMOVE_COMMENT(state, commentId) {
+    var index = state.article.comments.findIndex(function (comment) {
+      return comment.id === commentId;
+    });
+    if (index !== -1) {
+      state.article.comments.splice(index, 1);
+    }
   }
 };
 
@@ -29432,6 +29463,19 @@ var render = function () {
                   _c("small", { staticClass: "text-muted" }, [
                     _vm._v(_vm._s(comment.created_at)),
                   ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-sm",
+                      on: {
+                        click: function ($event) {
+                          return _vm.deleteComment(comment.id)
+                        },
+                      },
+                    },
+                    [_vm._v("\n                    Удалить\n                ")]
+                  ),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "toast-body" }, [
