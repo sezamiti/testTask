@@ -3,14 +3,11 @@
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="hero__content text-center">
-                    <div class="hero__content-tag">
-                        <a href="#">Разработчик PHP - Laravel</a>
-                    </div>
+
+                    <h1><a href="#">Новости</a></h1>
                     <h2><a href="#">Тестовое задание</a></h2>
 
-                    <div class="hero__content-tag">
-                        <a href="#">Udemy.com</a>
-                    </div>
+
                 </div>
             </div>
         </div>
