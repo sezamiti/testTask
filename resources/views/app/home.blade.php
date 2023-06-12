@@ -25,7 +25,7 @@
                             <span class="badge bg-danger">{{$article->state->views}} <i class="far fa-eye"></i></span>
                         </div>
                         <div class="mt-4">
-                            Теги:
+                            Автор:
                             @foreach ($article->tags as $tag)
                                 <a href="{{ route('article.tag', $tag->id) }}" class="badge bg-danger">{{$tag->label}}</a>
                             @endforeach

@@ -21,4 +21,18 @@ class ArticleController extends Controller
         $articles = $tag->articles()->findByTag();
         return view('app.article.byTag', compact('articles'));
     }
+
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+
+        if (!$article) {
+            return redirect()->back()->with('error', 'Новость не найдена');
+        }
+
+        // Удаление новости
+        $article->delete();
+
+        return redirect()->route('home')->with('success', 'Новость успешно удалена');
+    }
 }

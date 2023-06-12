@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
 
         $tags = \App\Models\Tag::factory(20)->create();
 
-        $articles = \App\Models\Article::factory(10)->create();
+        $articles = \App\Models\Article::factory(30)->create();
 
         //collections
         $tags_id = $tags->pluck('id');

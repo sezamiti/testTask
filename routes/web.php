@@ -20,3 +20,5 @@ Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index']
 Route::get('/articles/{slug}', [App\Http\Controllers\ArticleController::class, 'show'])->name('article.show');
 
 Route::get('/articles/tag/{tag}', [App\Http\Controllers\ArticleController::class, 'allByTag'])->name('article.tag');
+
+Route::delete('/articles/{id}', [App\Http\Controllers\ArticleController::class, 'destroy'])->name('article.destroy');
